@@ -58,3 +58,6 @@ class Player:
         half = self.size // 2
         self.x = max(half, min(WIDTH - half, self.x))
         self.y = max(half, min(HEIGHT - half, self.y))
+
+
+print("Hello World")
