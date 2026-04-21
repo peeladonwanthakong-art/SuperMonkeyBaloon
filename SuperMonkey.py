@@ -1,4 +1,4 @@
-#Pee(förra lektionen)
+#Pee
 import pygame, sys
 
 pygame.init()
@@ -27,15 +27,18 @@ class Button:
         self.rect = self.image.get_rect(center=(self.x_pos, self.y_pos))
         self.text_rect = self.text.get_rect(center=(self.x_pos, self.y_pos))
 
-    def update(self, screen):
+
+        #Pee, Andy och Melvin 
+
+    def refresss(self, screen):
         if self.image is not None:
             screen.blit(self.image, self.rect)
         screen.blit(self.text, self.text_rect)
 
-    def checkForInput(self, position):
+    def kollar_input(self, position):
         return self.rect.collidepoint(position)
 
-    def changeColor(self, position):
+    def ändra_färg(self, position):
         if self.rect.collidepoint(position):
             self.text = self.font.render(self.text_input, True, self.hovering_color)
         else:
@@ -49,7 +52,7 @@ class Button:
 #options()
 
 
-#Färger Pee & Andy
+#Pee & Andy
 def main_menu():
     while True:
         skärm.fill("black")
@@ -71,14 +74,16 @@ def main_menu():
                              text_input="Lämna", font=get_font(75),
                              base_color="#6B0202", hovering_color="White")
 
-        for button in [spela_knapp, settings_knapp, lämna_knapp]:
-            button.changeColor(mus_posi)
-            button.update(skärm)
 #Melvin
+        for button in [spela_knapp,  settings_knapp, lämna_knapp]:
+            button.ändra_färg(mus_posi)
+            button.refresss(skärm)
+ 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
+
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if spela_knapp.checkForInput(mus_posi):
                     play()
