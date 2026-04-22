@@ -68,7 +68,7 @@ def main_menu():
                              text_input="Spela", font=get_font(75),
                              base_color="#6B0202", hovering_color="White")
         settings_knapp= Button(image=None, pos=(640, 400),
-                                text_input="Instälningar", font=get_font(75),
+                                text_input="Inställningar", font=get_font(75),
                                 base_color="#6B0202", hovering_color="White")
         lämna_knapp = Button(image=None, pos=(640, 550),
                              text_input="Lämna", font=get_font(75),
