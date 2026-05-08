@@ -47,9 +47,52 @@ class Button:
 
 #play()
 
+   
+
+def inställningar():
+    while True:
+        skärm.fill("black")
+        
+        mus_posi = pygame.mouse.get_pos()
+        settings_text = get_font(80). render("Inställningar", True,"#FF0B0B")
+        settings_rect = settings_text.get_rect(center=(640,80))
+        skärm.blit(settings_text, settings_rect)
+
+        musik_knapp = Button(image=None, pos=(640, 220),
+                             text_input="Musik", font=get_font(75),
+                             base_color="#6B0202", hovering_color="white")
+
+        bakgrund_knapp = Button(image=None, pos=(640, 340),
+                                text_input="Bakgrund", font=get_font(75),
+                                base_color="#6B0202", hovering_color="white")
+
+        skins_knapp = Button(image=None, pos=(640, 460),
+                              text_input="Skins", font=get_font(75),
+                              base_color="#6B0202", hovering_color="white")
+
+        ljud_knapp = Button(image=None, pos=(640, 580),
+                            text_input="Ljud", font=get_font(75),
+                            base_color="#6B0202", hovering_color="white")
+
+        tillbaka_knapp = Button(image=None, pos=(640, 670),
+                                text_input="Tillbaka", font=get_font(50),
+                                base_color="#FF0B0B", hovering_color="white")
+        
+        for button in [musik_knapp, bakgrund_knapp, skins_knapp, ljud_knapp, tillbaka_knapp]:
+            button.ändra_färg(mus_posi)
+            button.refresss(skärm)
+        
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit
+
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if tillbaka_knapp.kollar_input(mus_posi):
+                    return
+        pygame.display.update()
 
 
-#options()
 
 
 #Pee & Andy
@@ -68,11 +111,12 @@ def main_menu():
                              text_input="Spela", font=get_font(75),
                              base_color="#6B0202", hovering_color="White")
         settings_knapp= Button(image=None, pos=(640, 400),
-                                text_input="Instälningar", font=get_font(75),
+                                text_input="Inställningar", font=get_font(75),
                                 base_color="#6B0202", hovering_color="White")
         lämna_knapp = Button(image=None, pos=(640, 550),
                              text_input="Lämna", font=get_font(75),
                              base_color="#6B0202", hovering_color="White")
+
 
 #Melvin
         for button in [spela_knapp,  settings_knapp, lämna_knapp]:
@@ -85,11 +129,11 @@ def main_menu():
                 sys.exit()
 
             if event.type == pygame.MOUSEBUTTONDOWN:
-                if spela_knapp.checkForInput(mus_posi):
+                if spela_knapp.kollar_input(mus_posi):
                     play()
-                if settings_knapp.checkForInput(mus_posi):
-                    options()
-                if lämna_knapp.checkForInput(mus_posi):
+                if settings_knapp.kollar_input(mus_posi):
+                    inställningar()
+                if lämna_knapp.kollar_input(mus_posi):
                     pygame.quit()
                     sys.exit()
 
