@@ -1,6 +1,7 @@
 #Pee
 import pygame, sys
-
+import math
+import random
 pygame.init()
 
 skärm = pygame.display.set_mode((1280, 720))
@@ -45,9 +46,30 @@ class Button:
             self.text = self.font.render(self.text_input, True, self.base_color)
 
 
-#play()
+def play():
+    klocka = pygame.time.Clock()
 
-   
+    px, py = 640.0, 360.0
+
+    while True:
+        klocka.tick(60)
+        mx, my = pygame.mouse.get_pos()
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                return
+
+        px += (mx - px) * 0.12
+        py += (my - py) * 0.12
+
+        skärm.fill("black")
+        pygame.draw.rect(skärm, "#67E4FA9A",   (px-25, py-25, 50, 50), border_radius=10)
+
+        pygame.display.update()
+
 
 def inställningar():
     while True:
