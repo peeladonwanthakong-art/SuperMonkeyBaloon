@@ -1,7 +1,5 @@
-#Pee
 import pygame, sys
-import math
-import random
+
 pygame.init()
 
 skärm = pygame.display.set_mode((1280, 720))
@@ -11,7 +9,7 @@ pygame.display.set_caption("Meny")
 def get_font(size):
     return pygame.font.Font(None, size)
 
-#Pee,Melvin,Andy(skit svårt att förstå kollade på en youtube video jätte bra)
+
 class Button:
     def __init__(self, image, pos, text_input, font, base_color, hovering_color):
         self.image = image
@@ -29,7 +27,7 @@ class Button:
         self.text_rect = self.text.get_rect(center=(self.x_pos, self.y_pos))
 
 
-        #Pee, Andy och Melvin 
+         
 
     def refresss(self, screen):
         if self.image is not None:
@@ -44,6 +42,11 @@ class Button:
             self.text = self.font.render(self.text_input, True, self.hovering_color)
         else:
             self.text = self.font.render(self.text_input, True, self.base_color)
+
+
+
+#def skinns()
+
 
 
 def play():
@@ -65,16 +68,33 @@ def play():
         px += (mx - px) * 0.12
         py += (my - py) * 0.12
 
-        skärm.fill("black")
-        pygame.draw.rect(skärm, "#67E4FA9A",   (px-25, py-25, 50, 50), border_radius=10)
+        skärm.fill(("black"))
+        for x in range(0, 1280, 60):
+            pygame.draw.line(skärm, (25, 35, 55), (x, 0), (x, 720))
+        for y in range(0, 720, 60):
+            pygame.draw.line(skärm, (25, 35, 55), (0, y), (1280, y))
+
+        pygame.draw.rect(skärm, "white", (px-25, py-25, 50, 50), border_radius=10)
+        pygame.draw.rect(skärm, "black", (px-25, py-25, 50, 50), 2, border_radius=10)
 
         pygame.display.update()
+
+
+
+
+
+
 
 
 def inställningar():
     while True:
         skärm.fill("black")
+        for x in range(0, 1280, 60):
+            pygame.draw.line(skärm, (25, 35, 55), (x, 0), (x, 720))
+        for y in range(0, 720, 60):
+            pygame.draw.line(skärm, (25, 35, 55), (0, y), (1280, y))
         
+
         mus_posi = pygame.mouse.get_pos()
         settings_text = get_font(80). render("Inställningar", True,"#FF0B0B")
         settings_rect = settings_text.get_rect(center=(640,80))
@@ -117,10 +137,19 @@ def inställningar():
 
 
 
-#Pee & Andy
+
+
+
 def main_menu():
     while True:
+
+
         skärm.fill("black")
+        for x in range(0, 1280, 60):
+            pygame.draw.line(skärm, (25, 35, 55), (x, 0), (x, 720))
+        for y in range(0, 720, 60):
+            pygame.draw.line(skärm, (25, 35, 55), (0, y), (1280, y))
+
 
         mus_posi = pygame.mouse.get_pos()
 
@@ -128,7 +157,7 @@ def main_menu():
         meny_rect = meny_text.get_rect(center=(640, 100))
         skärm.blit(meny_text, meny_rect)
         
-        #Färger Pee & Andy
+        
         spela_knapp = Button(image=None, pos=(640, 250),
                              text_input="Spela", font=get_font(75),
                              base_color="#6B0202", hovering_color="White")
@@ -140,7 +169,10 @@ def main_menu():
                              base_color="#6B0202", hovering_color="White")
 
 
-#Melvin
+
+
+
+
         for button in [spela_knapp,  settings_knapp, lämna_knapp]:
             button.ändra_färg(mus_posi)
             button.refresss(skärm)
