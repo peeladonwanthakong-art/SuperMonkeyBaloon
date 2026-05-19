@@ -5,7 +5,7 @@ pygame.init()
 skärm = pygame.display.set_mode((1280, 720))
 pygame.display.set_caption("Meny")
 
-vald_bakgrund = 0  # ← global state för bakgrund
+vald_bakgrund = 1  # ← global state för bakgrund
 
 
 def rita_bakgrund():
@@ -27,10 +27,6 @@ def rita_bakgrund():
             pygame.draw.line(skärm, (80, 10, 10), (0, y), (1280, y))
         pygame.draw.line(skärm, (120, 20, 20), (640, 0), (640, 720), 2)
         pygame.draw.line(skärm, (120, 20, 20), (0, 360), (1280, 360), 2)
-
-    else:
-        # Standard: helt svart
-        skärm.fill("black")
 
 
 def get_font(size):
@@ -116,16 +112,12 @@ def välj_bakgrund():
         bakgrund3_knapp = Button(image=None, pos=(640, 460),
                                  text_input="Bakgrund 3", font=get_font(75),
                                  base_color="#6B0202", hovering_color="white")
-
-        standard_knapp = Button(image=None, pos=(640, 580),
-                                text_input="Standard", font=get_font(75),
-                                base_color="#6B0202", hovering_color="white")
-
+        
         tillbaka_knapp = Button(image=None, pos=(640, 670),
                                 text_input="Tillbaka", font=get_font(50),
                                 base_color="#FF0B0B", hovering_color="white")
 
-        for button in [bakgrund1_knapp, bakgrund2_knapp, bakgrund3_knapp, standard_knapp, tillbaka_knapp]:
+        for button in [bakgrund1_knapp, bakgrund2_knapp, bakgrund3_knapp, tillbaka_knapp]:
             button.ändra_färg(mus_posi)
             button.refresss(skärm)
 
@@ -143,8 +135,6 @@ def välj_bakgrund():
                     vald_bakgrund = 2
                 if bakgrund3_knapp.kollar_input(mus_posi):
                     vald_bakgrund = 3
-                if standard_knapp.kollar_input(mus_posi):
-                    vald_bakgrund = 0
 
         pygame.display.update()
 
