@@ -13,9 +13,9 @@ def rita_bakgrund():
         # Rutnät (mörkblå linjer)
         skärm.fill("black")
         for x in range(640 % 60, 1280, 60):
-            pygame.draw.line(skärm, (25, 35, 55), (x, 0), (x, 720))
+            pygame.draw.line(skärm, ("#293A4E"), (x, 0), (x, 720))
         for y in range(360 % 60, 720, 60):
-            pygame.draw.line(skärm, (25, 35, 55), (0, y), (1280, y))
+            pygame.draw.line(skärm, ("#293A4E"), (0, y), (1280, y))
 
 
     elif vald_bakgrund == 2:
