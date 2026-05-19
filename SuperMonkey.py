@@ -28,6 +28,15 @@ def rita_bakgrund():
         pygame.draw.line(skärm, (120, 20, 20), (640, 0), (640, 720), 2)
         pygame.draw.line(skärm, (120, 20, 20), (0, 360), (1280, 360), 2)
 
+    elif vald_bakgrund == 3:
+        # Röd/mörk arena-känsla som passar Block Fighter
+        skärm.fill(("black"))
+        for x in range(640 % 60, 1280, 60):
+            pygame.draw.line(skärm, (80, 10, 10), (x, 0), (x, 720))
+        for y in range(360 % 60, 720, 60):
+            pygame.draw.line(skärm, (80, 10, 10), (0, y), (1280, y))
+        pygame.draw.line(skärm, (120, 20, 20), (640, 0), (640, 720), 2)
+        pygame.draw.line(skärm, (120, 20, 20), (0, 360), (1280, 360), 2
 
 def get_font(size):
     return pygame.font.Font(None, size)
